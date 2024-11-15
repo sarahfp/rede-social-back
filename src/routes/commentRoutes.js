@@ -1,21 +1,25 @@
-import { Router } from 'express'
-import CommentController from '../controllers/commentController.js'
-import authMiddleware from '../middlewares/authMiddleware.js'
+import { Router } from 'express';
+import CommentController from '../controllers/commentController.js';
+import authMiddleware from '../middlewares/authMiddleware.js';
 
-const CommentRoutes = Router()
+const CommentRoutes = Router();
 
-CommentRoutes.get('/comments', CommentController.getAllComments)
-CommentRoutes.get('/comments/:postId', CommentController.getCommentByPostId)
-CommentRoutes.post('/comments', authMiddleware, CommentController.createComment)
+CommentRoutes.get('/comment', CommentController.getAllComments);
+CommentRoutes.get('/comment/:postId', CommentController.getCommentByPostId);
+CommentRoutes.post(
+  '/comment',
+  authMiddleware,
+  CommentController.createComment,
+);
 CommentRoutes.put(
-  '/comments/:commentId',
+  '/comment/:commentId',
   authMiddleware,
-  CommentController.updateComment
-)
+  CommentController.updateComment,
+);
 CommentRoutes.delete(
-  '/comments/:commentId',
+  '/comment/:commentId',
   authMiddleware,
-  CommentController.deleteComment
-)
+  CommentController.deleteComment,
+);
 
-export default CommentRoutes
+export default CommentRoutes;

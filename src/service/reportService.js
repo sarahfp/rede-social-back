@@ -1,24 +1,21 @@
-import Connection from '../config/database.js'
-import Post from '../models/Post.js'
+import Connection from '../config/database.js';
+import Post from '../models/Post.js';
 
 class ReportService {
   static async getReport() {
     return await Post.findAll({
-      attributes: ['title'],
-      include: [
-        {
-          model: Comment,
-          attributes: [
-            [
-              Connection.fn('COUNT', Connection.col('Comment.id')),
-              'commentCount'
-            ]
-          ]
-        }
+      attributes: [
+        'title',
+        [
+          Connection.literal(
+            '(SELECT COUNT(*) FROM Comments WHERE Comments.post_id = Posts.id)',
+          ),
+          'commentCount',
+        ],
       ],
-      group: ['Post.id']
-    })
+      group: ['Posts.id'],
+    });
   }
 }
 
-export default ReportService
+export default ReportService;

@@ -1,6 +1,6 @@
-import { DataTypes } from 'sequelize'
-import Connection from '../config/database.js'
-import User from './User.js'
+import { DataTypes } from 'sequelize';
+import Connection from '../config/database.js';
+import User from './User.js';
 
 const Post = Connection.define(
   'Posts',
@@ -8,32 +8,32 @@ const Post = Connection.define(
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: User,
-        key: 'id'
+        key: 'id',
       },
-      onDelete: 'CASCADE'
+      onDelete: 'CASCADE',
     },
     title: {
       type: DataTypes.STRING(100),
-      allowNull: false
+      allowNull: false,
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: true
-    }
+      allowNull: true,
+    },
   },
   {
-    timestamps: true
-  }
-)
+    timestamps: true,
+  },
+);
 
-User.hasMany(Post, { foreignKey: 'user_id' })
-Post.belongsTo(User, { foreignKey: 'user_id' })
+User.hasMany(Post, { foreignKey: 'user_id' });
+Post.belongsTo(User, { foreignKey: 'user_id' });
 
-export default Post
+export default Post;

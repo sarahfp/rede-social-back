@@ -1,8 +1,8 @@
-import { Router } from 'express'
-import ReportController from '../controllers/reportController.js'
+import { Router } from 'express';
+import ReportController from '../controllers/reportController.js';
 
-const ReportRoutes = Router()
+const ReportRoutes = Router();
 
-ReportRoutes.get('/report', ReportController.getReport)
+ReportRoutes.get('/report', ReportController.getReport);
 
-export default ReportRoutes
+export default ReportRoutes;
