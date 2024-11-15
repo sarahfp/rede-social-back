@@ -6,6 +6,7 @@ import CommentRoutes from './src/routes/commentRoutes.js'
 import AuthRoutes from './src/routes/authRoutes.js'
 import dotenv from 'dotenv'
 import ReportRoutes from './src/routes/reportRoutes.js'
+import cors from 'cors'
 dotenv.config()
 const app = express()
 
@@ -16,7 +17,7 @@ app.use('/api', PostRoutes)
 app.use('/api', CommentRoutes)
 app.use('/api', AuthRoutes)
 app.use('/api', ReportRoutes)
-
+app.use(cors())
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
