@@ -27,6 +27,10 @@ const Post = Connection.define(
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    image: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
   },
   {
     timestamps: true,

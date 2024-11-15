@@ -6,11 +6,7 @@ const CommentRoutes = Router();
 
 CommentRoutes.get('/comment', CommentController.getAllComments);
 CommentRoutes.get('/comment/:postId', CommentController.getCommentByPostId);
-CommentRoutes.post(
-  '/comment',
-  authMiddleware,
-  CommentController.createComment,
-);
+CommentRoutes.post('/comment', authMiddleware, CommentController.createComment);
 CommentRoutes.put(
   '/comment/:commentId',
   authMiddleware,

@@ -10,7 +10,8 @@ class UserService {
   }
 
   static async createUser(data) {
-    return await User.create(data);
+    const user = await User.create(data);
+    return { id: user.id, email: user.email };
   }
 
   static async updateUser(userId, data) {

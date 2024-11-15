@@ -5,6 +5,8 @@ import User from '../models/User.js';
 
 class AuthService {
   static async login(email, password) {
+    if (!email) throw new Error('Email não informado.');
+    if (!password) throw new Error('Senha não informada;');
     const user = await User.findOne({ where: { email } });
     if (user && (await bcrypt.compare(password, user.password))) {
       const token = jwt.sign(
